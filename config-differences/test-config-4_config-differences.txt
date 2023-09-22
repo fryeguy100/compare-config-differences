@@ -1,0 +1,35 @@
+! Preferred Cisco Nexus Configuration
+hostname PreferredNexusDevice
+snmp-server community private rw
+snmp-server location Headquarters, Room 101
+snmp-server contact admin@preferred.com
+snmp-server host 192.168.1.10 traps version 2c public
+snmp-server enable traps snmp linkdown linkup coldStart
+snmp-server source-interface traps Ethernet1/8
+snmp-server tftp-server-list TFTP_LIST
+snmp-server system-shutdown
+snmp-server ifindex persist
+logging server 192.168.1.25 6 use-vrf management
+logging logfile messages 7 size 4096
+! Access Control Lists
+ip access-list ACL_SNMP
+  10 permit ip any any log
+ip access-list ACL_HTTP
+  10 permit tcp any any eq www
+vlan 80
+  name PreferredManagement
+vlan 90
+  name PreferredProduction
+interface Ethernet1/8
+  switchport mode access
+  switchport access vlan 80
+interface Ethernet1/9
+  switchport trunk allowed vlan 80,90
+! Routing Configuration
+ip route 0.0.0.0/0 192.168.1.2
+router ospf 2
+  router-id 2.2.2.2
+  passive-interface default
+  no passive-interface Ethernet1/9
+! Timeouts
+snmp-server timeout 15

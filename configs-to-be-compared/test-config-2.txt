@@ -1,0 +1,23 @@
+! Test Cisco Nexus Configuration 2
+
+hostname TestDevice2
+
+! SNMP Configuration
+snmp-server community public ro
+snmp-server location Building 2, Room 103
+snmp-server contact admin2@test.com
+
+! Logging Configuration
+logging server 192.168.2.22 6 use-vrf management
+
+! VLAN Configuration
+vlan 50
+  name TestVLAN2
+
+! Interface Configuration
+interface Ethernet1/5
+  switchport mode trunk
+  switchport trunk allowed vlan 40,50
+
+! Routing Configuration
+ip route 0.0.0.0/0 192.168.2.2

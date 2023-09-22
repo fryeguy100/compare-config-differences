@@ -6,10 +6,15 @@
 	objectVersion = 56;
 	objects = {
 
+/* Begin PBXFileReference section */
+		A9BA09902ABD3CA700886CF1 /* config-differences-script.py */ = {isa = PBXFileReference; explicitFileType = text.script.python; name = "config-differences-script.py"; path = "/Users/bfrye/Documents/Xcode apps and scripts/Git Repo/compare-config-differences/config-differences-script.py"; sourceTree = "<absolute>"; wrapsLines = 0; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		A9BA09852ABD3AC300886CF1 = {
 			isa = PBXGroup;
 			children = (
+				A9BA09902ABD3CA700886CF1 /* config-differences-script.py */,
 			);
 			sourceTree = "<group>";
 		};

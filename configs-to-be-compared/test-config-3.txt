@@ -1,0 +1,21 @@
+! Test Cisco Nexus Configuration 3
+
+hostname TestDevice3
+
+! SNMP Configuration
+snmp-server community private rw
+snmp-server location Building 2, Room 104
+snmp-server contact admin3@test.com
+snmp-server enable traps snmp linkdown linkup coldStart
+
+! VLAN Configuration
+vlan 60
+  name TestVLAN3
+
+! Interface Configuration
+interface Ethernet1/6
+  switchport mode access
+  switchport access vlan 60
+
+! Routing Configuration
+ip route 0.0.0.0/0 192.168.2.3
